@@ -17,10 +17,6 @@ const { ipcRenderer } = window.require('electron');
 import '../styles/Dashboard.css';
 import { VncScreen } from 'react-vnc';
 
-
-
-
-
 export interface SystemCardData {
   name: string;
   type: string;

@@ -107,4 +107,4 @@ const NotificationsCenter: React.FC<NotificationsCenterProps> = ({
   );
 };
 
-export default NotificationsCenter; 
+export default NotificationsCenter;
