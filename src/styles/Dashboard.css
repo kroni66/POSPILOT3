@@ -908,3 +908,122 @@
   padding: 20px;
   color: var(--text-color-light);
 }
+
+/* Styles for SystemList component */
+.system-list {
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.system-list__header,
+.system-list__item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 2fr;
+  align-items: center;
+  padding: 12px 16px;
+}
+
+.system-list__header {
+  background-color: var(--header-bg-color);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: var(--text-color);
+}
+
+.system-list__item {
+  border-top: 1px solid var(--border-color);
+  transition: background-color 0.2s ease;
+}
+
+.system-list__item:hover {
+  background-color: var(--hover-bg-color);
+}
+
+.system-list__name {
+  font-weight: bold;
+}
+
+.system-list__type,
+.system-list__sco-type,
+.system-list__architecture {
+  font-size: 0.9rem;
+}
+
+.system-list__status {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.system-list__status svg {
+  margin-right: 5px;
+}
+
+.system-list__status.online {
+  color: var(--success-color);
+}
+
+.system-list__status.offline {
+  color: var(--error-color);
+}
+
+.system-list__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.system-list__button {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.system-list__button svg {
+  margin-right: 5px;
+}
+
+.system-list__button--details {
+  background-color: var(--secondary-button-bg);
+  color: var(--secondary-button-text);
+}
+
+.system-list__button--details:hover {
+  background-color: var(--secondary-button-hover-bg);
+}
+
+.system-list__button--parser {
+  background-color: var(--primary-button-bg);
+  color: var(--primary-button-text);
+}
+
+.system-list__button--parser:hover {
+  background-color: var(--primary-button-hover-bg);
+}
+
+@media (max-width: 768px) {
+  .system-list__header,
+  .system-list__item {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .system-list__header span:nth-child(n+3),
+  .system-list__item > *:nth-child(n+3) {
+    display: none;
+  }
+
+  .system-list__actions {
+    grid-column: span 2;
+    justify-content: flex-start;
+  }
+}
