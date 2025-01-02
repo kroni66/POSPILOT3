@@ -1,0 +1,31 @@
+[
+    {
+        "language": "en",
+        "language_code": "en",
+        "iSCANParser": "iSCAN Parser",
+        "SQLSpace": "SQL Space",
+        "POSAdapterParser": "POS Adapter Parser",
+        "Dashboard": "Dashboard"
+    },
+    {
+        "language": "cs",
+        "language_code": "cs",
+        "iSCANParser": "iSCAN Parser",
+        "SQLSpace": "SQL Space",
+        "POSAdapterParser": "POS Adapter Parser"
+    },
+    {
+        "language": "pl",
+        "language_code": "pl",
+        "iSCANParser": "iSCAN Parser",
+        "SQLSpace": "SQL Space",
+        "POSAdapterParser": "POS Adapter Parser"
+    },
+    {
+        "language": "sk",
+        "language_code": "sk",
+        "iSCANParser": "iSCAN Parser",
+        "SQLSpace": "SQL Space",
+        "POSAdapterParser": "POS Adapter Parser"
+    }
+]

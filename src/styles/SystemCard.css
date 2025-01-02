@@ -1,0 +1,373 @@
+.system-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.system-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.system-card--sco {
+  border-left: 4px solid #4caf50;
+}
+
+.system-card--pos {
+  border-left: 4px solid #2196f3;
+}
+
+.system-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.system-card__title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+  flex-grow: 1;
+}
+
+.system-card__type {
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: #e0e0e0;
+  color: #333;
+  margin-right: 8px;
+}
+
+.system-card__content {
+  margin-bottom: 16px;
+  color: white;
+}
+
+.system-card__detail {
+  font-size: 0.9rem;
+  margin: 4px 0;
+  color: white;
+}
+
+.system-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.system-card__button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 0.9rem;
+}
+
+.system-card__button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Add specific colors for each button type */
+.system-card__button:nth-child(1) {
+  background-color: #3498db;
+  color: white;
+}
+
+.system-card__button:nth-child(2) {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.system-card__button:nth-child(3) {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.system-card__button:nth-child(1):hover {
+  background-color: #2980b9;
+}
+
+.system-card__button:nth-child(2):hover {
+  background-color: #27ae60;
+}
+
+.system-card__button:nth-child(3):hover {
+  background-color: #c0392b;
+}
+
+.system-card__button svg {
+  margin-right: 8px;
+  font-size: 1.1rem;
+}
+
+.system-card__button--primary {
+  background-color: #2196f3;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(33, 150, 243, 0.3);
+}
+
+.system-card__button--primary:hover {
+  background-color: #1e88e5;
+  box-shadow: 0 4px 8px rgba(33, 150, 243, 0.4);
+}
+
+.system-card__button--secondary {
+  background-color: #f5f5f5;
+  color: #333333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.system-card__button--secondary:hover {
+  background-color: #e0e0e0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.system-card__button--warning {
+  background-color: #ff5722;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(255, 87, 34, 0.3);
+}
+
+.system-card__button--warning:hover {
+  background-color: #f4511e;
+  box-shadow: 0 4px 8px rgba(255, 87, 34, 0.4);
+}
+
+/* Add focus styles for accessibility */
+.system-card__button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.5);
+}
+
+/* Add active styles for better feedback */
+.system-card__button:active {
+  transform: translateY(1px);
+}
+
+/* Improve responsiveness */
+@media (max-width: 480px) {
+  .system-card__footer {
+    flex-direction: column;
+  }
+
+  .system-card__button {
+    width: 100%;
+  }
+}
+
+.system-card__vnc-icon,
+.system-card__info-icon {
+  color: white;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.system-card__vnc-icon:hover,
+.system-card__info-icon:hover {
+  transform: scale(1.1);
+  color: #3498db; /* Change to your preferred hover color */
+}
+
+.system-card__icons {
+  display: flex;
+  align-items: center;
+}
+
+.system-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.system-card__button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.system-card__button--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.system-card__button--disabled:hover {
+  background-color: inherit;
+}
+
+.system-card__trash-icon {
+  cursor: pointer;
+  margin-left: 8px;
+  color: #e74c3c; /* Change to a visible color, e.g., red */
+  opacity: 0.7;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.system-card__trash-icon:hover {
+  opacity: 1;
+}
+
+.system-card__status-indicator {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.system-card__status-indicator.online {
+  background-color: #4CAF50;
+}
+
+.system-card__status-indicator.offline {
+  background-color: #F44336;
+}
+
+/* Add these styles for the checkbox */
+.system-card__checkbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.system-card__checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.system-card__checkbox .checkmark {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  background-color: rgba(238, 238, 238, 0.8);
+  border: 2px solid #2196F3;
+  border-radius: 4px;
+}
+
+.system-card__checkbox:hover input ~ .checkmark {
+  background-color: rgba(204, 204, 204, 0.8);
+}
+
+.system-card__checkbox input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+.system-card__checkbox .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.system-card__checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Adjust header for checkbox */
+.system-card__header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background: linear-gradient(to right, #3498db, #e91e63);
+  color: white;
+}
+
+.system-card__title-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.system-card__ip {
+  font-size: 0.8rem;
+  color: white;
+  margin-top: -4px;
+}
+
+.system-card__ping-icon {
+  color: white;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.system-card__ping-icon:hover {
+  transform: scale(1.1);
+  color: #3498db;
+}
+
+.system-card__ping-icon.pinging {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.system-card__refresh-icon {
+  color: white;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.system-card__refresh-icon:hover {
+  transform: scale(1.1);
+  color: #3498db;
+}
+
+.system-card__refresh-icon.refreshing {
+  animation: spin 2s linear infinite;
+  color: #2ecc71;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

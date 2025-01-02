@@ -1,0 +1,26 @@
+.log-viewer {
+  flex-grow: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.log-viewer__content {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin: 0;
+  padding: 10px;
+  background-color: #1e1c1c;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.log-viewer__line {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.log-viewer__line--highlighted {
+  background-color: #626262;
+}

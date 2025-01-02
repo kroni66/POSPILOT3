@@ -1,0 +1,439 @@
+.pos-adapter-parser {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.pos-adapter-parser__parser-section {
+  flex: 1;
+  min-height: 300px;
+  overflow: hidden;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.pos-adapter-parser__resize-handle {
+  height: 8px;
+  background-color: var(--border-color);
+  cursor: ns-resize;
+}
+
+
+/* Update Log Viewer styles */
+.pos-adapter-parser__log-viewer {
+  flex: 1;
+  overflow: hidden;
+  padding: 1rem;
+  background-color: var(--background-color);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.pos-adapter-parser__log-line {
+  font-family: monospace;
+  white-space: pre;
+  padding: 0 5px;
+}
+
+.pos-adapter-parser__log-line--highlighted {
+  background-color: var(--log-line-highlighted-bg-color);
+  font-weight: bold;
+}
+
+/* Remove styles specific to react-syntax-highlighter */
+/* .pos-adapter-parser__log-viewer pre,
+.pos-adapter-parser__log-viewer code {
+  // Remove these styles
+} */
+
+/* Add styles for Monaco Editor */
+.pos-adapter-parser__results {
+  flex: 1;
+  min-height: 200px;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.pos-adapter-parser__header-row {
+  display: flex;
+  height: 40px;
+  background-color: var(--header-bg-color);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.pos-adapter-parser__header-cell {
+  padding: 0 5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pos-adapter-parser__header-cell:hover {
+  background-color: var(--header-hover-bg-color);
+}
+
+.pos-adapter-parser__header-cell svg {
+  margin-left: 5px;
+  font-size: 0.8rem;
+}
+
+.pos-adapter-parser__header-jump-icon {
+  margin-left: 5px;
+  font-size: 0.8rem;
+  color: var(--icon-color);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.pos-adapter-parser__header-jump-icon:hover {
+  color: var(--primary-color);
+}
+
+.pos-adapter-parser__row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s ease;
+}
+
+.pos-adapter-parser__row:hover {
+  background-color: var(--row-hover-bg-color);
+}
+
+
+.pos-adapter-parser__cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.pos-adapter-parser__title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+.pos-adapter-parser__subtitle {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--secondary-color);
+}
+
+.pos-adapter-parser__controls {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pos-adapter-parser__button {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.pos-adapter-parser__button:hover {
+  background-color: var(--primary-color-hover);
+}
+
+.pos-adapter-parser__button svg {
+  margin-right: 0.5rem;
+}
+
+.pos-adapter-parser__button--add {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+.pos-adapter-parser__button--add:hover {
+  background-color: var(--secondary-color-hover);
+}
+
+.pos-adapter-parser__search-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pos-adapter-parser__search-input {
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 200px;
+}
+
+.pos-adapter-parser__balance-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.pos-adapter-parser__balance-icon {
+  font-size: 0.8rem;
+}
+
+.pos-adapter-parser__balance-icon.positive {
+  color: #4caf50;
+}
+
+.pos-adapter-parser__balance-icon.negative {
+  color: #f44336;
+}
+
+/* React Virtualized Table Styles */
+.ReactVirtualized__Table {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.ReactVirtualized__Table__headerRow {
+  font-weight: 600;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--header-bg-color);
+  border-bottom: 2px solid var(--border-color);
+  padding: 0 10px;
+}
+
+.ReactVirtualized__Table__row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s ease;
+}
+
+.ReactVirtualized__Table__headerColumn,
+.ReactVirtualized__Table__rowColumn {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  padding: 0 10px;
+}
+
+.ReactVirtualized__Table__sortableHeaderColumn {
+  cursor: pointer;
+}
+
+.ReactVirtualized__Table__sortableHeaderIcon {
+  flex: 0 0 24px;
+  height: 24px;
+  width: 24px;
+  margin-left: 5px;
+}
+
+/* Custom scrollbar styles */
+.ReactVirtualized__Table__Grid::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.ReactVirtualized__Table__Grid::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color);
+}
+
+.ReactVirtualized__Table__Grid::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-color);
+  border-radius: 4px;
+}
+
+.ReactVirtualized__Table__Grid::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ReactVirtualized__Table__headerColumn,
+  .ReactVirtualized__Table__rowColumn {
+    padding: 5px;
+  }
+
+  .ReactVirtualized__Table__headerRow {
+    padding: 0 5px;
+  }
+}
+
+/* Add these variables to your :root or [data-theme="light"] selector */
+:root {
+  --header-bg-color: #f5f5f5;
+  --row-hover-bg-color: #f0f0f0;
+  --scrollbar-track-color: #f1f1f1;
+  --scrollbar-thumb-color: #c1c1c1;
+  --scrollbar-thumb-hover-color: #a8a8a8;
+  --input-bg-color: #ffffff;
+  --icon-color: #757575;
+  --row-selected-bg-color: #e6f7ff;
+  --log-line-highlighted-bg-color: #ffd700;
+  --divider-bg-color: #f0f0f0;
+  --divider-border-color: #d0d0d0;
+  --secondary-text-color: #666;
+}
+
+/* Add these variables to your [data-theme="dark"] selector */
+[data-theme="dark"] {
+  --header-bg-color: #2c2c2c;
+  --row-hover-bg-color: #3a3a3a;
+  --scrollbar-track-color: #2c2c2c;
+  --scrollbar-thumb-color: #4a4a4a;
+  --scrollbar-thumb-hover-color: #5a5a5a;
+  --input-bg-color: #2c2c2c;
+  --icon-color: #a0a0a0;
+  --row-selected-bg-color: #1c3a5e;
+  --log-line-highlighted-bg-color: #8b7500;
+  --divider-bg-color: #2a2a2a;
+  --divider-border-color: #3a3a3a;
+  --secondary-text-color: #999;
+}
+
+.pos-adapter-parser__log-line {
+  transition: background-color 0.3s ease;
+}
+
+.pos-adapter-parser__log-line--highlighted {
+  background-color: var(--log-line-highlighted-bg-color);
+  font-weight: bold;
+}
+
+.pos-adapter-parser__balance-diff {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.pos-adapter-parser__balance-diff.positive {
+  color: #4caf50;
+}
+
+.pos-adapter-parser__balance-diff.negative {
+  color: #f44336;
+}
+
+/* Add this new style for the highlighted line in Monaco Editor */
+.highlighted-line {
+  background-color: rgba(234, 234, 0, 0.596) !important;
+  width: 100%;
+}
+
+.pos-adapter-parser__cell-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.pos-adapter-parser__jump-icon {
+  margin-left: 5px;
+  font-size: 0.8rem;
+  color: var(--icon-color);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.pos-adapter-parser__row:hover .pos-adapter-parser__jump-icon {
+  opacity: 1;
+}
+
+.pos-adapter-parser__jump-icon:hover {
+  color: var(--primary-color);
+}
+
+/* Add a cleanup class */
+.pos-adapter-parser--unmounting {
+  opacity: 0;
+}
+
+.pos-adapter-parser__back-button {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  margin-right: 1rem;
+}
+
+.pos-adapter-parser__back-button:hover {
+  background-color: var(--primary-color-hover);
+}
+
+.pos-adapter-parser__back-button svg {
+  margin-right: 0.5rem;
+}
+
+.pos-adapter-parser__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Remove or adjust styles related to CodeMirror if they exist */
+/* .CodeMirror .highlighted-line {
+  // Remove or adjust this style
+} */
+
+.pos-adapter-parser__divider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: var(--divider-bg-color);
+  border-top: 1px solid var(--divider-border-color);
+  border-bottom: 1px solid var(--divider-border-color);
+  font-size: 0.9em;
+  color: var(--secondary-text-color);
+}
+
+.pos-adapter-parser__divider-date {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.pos-adapter-parser__divider-filename {
+  font-size: 0.8em;
+  opacity: 0.8;
+  text-align: right;
+}

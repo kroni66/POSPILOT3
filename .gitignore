@@ -1,0 +1,7 @@
+node_modules/
+out/node_modules/
+dist/win-unpacked/
+dist/
+.git/
+.cursorrules
+.github

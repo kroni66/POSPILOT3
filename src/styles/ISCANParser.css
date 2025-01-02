@@ -1,0 +1,97 @@
+.iscan-parser {
+    padding: 16px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .iscan-parser__title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+  
+  .iscan-parser__controls {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .iscan-parser__upload-button,
+  .iscan-parser__archive-button,
+  .iscan-parser__download-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+    margin-right: 8px;
+  }
+  
+  .iscan-parser__upload-button:hover,
+  .iscan-parser__archive-button:hover,
+  .iscan-parser__download-button:hover {
+    background-color: var(--button-hover-background-color);
+  }
+  
+  .iscan-parser__file-input {
+    display: none;
+  }
+  
+  .iscan-parser__search {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+  
+  .iscan-parser__search-input {
+    padding: 8px;
+    border: 1px solid var(--button-disabled-background-color);
+    border-radius: 4px;
+    margin-right: 8px;
+  }
+  
+  .iscan-parser__search-icon {
+    font-size: 1.25rem;
+  }
+  
+  .iscan-parser__sco-selection,
+  .iscan-parser__archive-selection {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .iscan-parser__sco-selection select,
+  .iscan-parser__archive-selection select {
+    padding: 8px;
+    border: 1px solid var(--button-disabled-background-color);
+    border-radius: 4px;
+    margin-right: 8px;
+  }
+  
+  .iscan-parser__table-wrapper {
+    overflow-x: auto;
+  }
+  
+  .iscan-parser__table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .iscan-parser__table th,
+  .iscan-parser__table td {
+    padding: 8px;
+    border: 1px solid var(--button-disabled-background-color);
+    text-align: left;
+  }
+  
+  .iscan-parser__error {
+    color: red;
+    margin-top: 16px;
+  }

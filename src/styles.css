@@ -1,0 +1,21 @@
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --modal-background-color: #ffffff;
+  --modal-text-color: #000000;
+  --button-background-color: #007bff;
+  --button-text-color: #ffffff;
+  --button-disabled-background-color: #ccc;
+  --button-disabled-text-color: #666;
+}
+
+[data-theme='dark'] {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --modal-background-color: #1e1e1e;
+  --modal-text-color: #ffffff;
+  --button-background-color: #007bff;
+  --button-text-color: #ffffff;
+  --button-disabled-background-color: #444;
+  --button-disabled-text-color: #888;
+}

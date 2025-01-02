@@ -1,0 +1,6 @@
+/* Apply reset styles to everything except Monaco */
+*:not(.monaco-editor *) {
+  /* Your reset styles */
+}
+
+/* ... (rest of your global styles) ... */

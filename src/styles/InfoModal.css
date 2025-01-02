@@ -1,0 +1,16 @@
+.info-modal {
+  max-width: 400px;
+  width: 100%;
+}
+
+.info-modal .modal-content {
+  padding: 20px;
+}
+
+.info-modal p {
+  margin-bottom: 10px;
+}
+
+.info-modal strong {
+  font-weight: 600;
+}
