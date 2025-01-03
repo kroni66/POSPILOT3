@@ -269,7 +269,7 @@ const SystemCard: React.FC<SystemCardProps> = ({ name, type, details, onDetailsC
           ipAddress: systemInfo?.ipAddress || '',
           macAddress: systemInfo?.macAddress || '',
           operatingSystem: systemInfo?.operatingSystem || '',
-          hddSpace: '' // Add this property with an empty string as a default value
+          hddSpace: systemInfo?.hddSpace || '' // Add this property with an empty string as a default value
         }}
       />
     </div>

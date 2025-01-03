@@ -31,6 +31,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ isOpen, onClose, systemInfo }) =>
           <p><strong>IP Address:</strong> {systemInfo.ipAddress}</p>
           <p><strong>MAC Address:</strong> {systemInfo.macAddress}</p>
           <p><strong>Operating System:</strong> {systemInfo.operatingSystem}</p>
+          <p><strong>HDD Space:</strong> {systemInfo.hddSpace}</p>
         </div>
       </div>
     </div>

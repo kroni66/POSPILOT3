@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Dashboard from './components/Dashboard';
 import LoginScreen from './components/LoginScreen';
+import PluginManager from './components/PluginManager';
 import './styles/App.css';
 
 const App = () => {
@@ -23,7 +24,10 @@ const App = () => {
       {!isLoggedIn ? (
         <LoginScreen onLogin={handleLogin} />
       ) : (
-        <Dashboard onLogout={handleLogout} />
+        <>
+          <Dashboard onLogout={handleLogout} />
+          <PluginManager />
+        </>
       )}
     </div>
   );
