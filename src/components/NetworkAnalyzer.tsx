@@ -51,11 +51,13 @@ const NetworkAnalyzer: React.FC<NetworkAnalyzerProps> = ({ isOpen, onClose }) =>
           ) : error ? (
             <div className="error-message">{error}</div>
           ) : (
-            <ul>
+            <div className="network-grid">
               {networkData.map((network) => (
-                <li key={network.id}>{network.name}</li>
+                <div key={network.id} className="network-grid-item">
+                  {network.name}
+                </div>
               ))}
-            </ul>
+            </div>
           )}
         </div>
       </div>
