@@ -809,3 +809,46 @@ safeIpcHandler('disconnect-status', async (event, systemName) => {
   }
   return { success: true };
 });
+
+// Add IPC handlers for network analyzer selection
+safeIpcHandler('get-network-analyzer-info', async (event, systemName) => {
+  return new Promise((resolve, reject) => {
+    const scriptPath = path.join(process.resourcesPath, 'assets', 'get_network_analyzer_info.ps1');
+    const command = `powershell.exe -ExecutionPolicy Bypass -File "${scriptPath}" -systemName "${systemName}"`;
+
+    console.log('Executing command:', command);
+
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Error executing PowerShell script: ${error}`);
+        reject(error);
+        return;
+      }
+      if (stderr) {
+        console.error(`PowerShell script stderr: ${stderr}`);
+      }
+      resolve(stdout);
+    });
+  });
+});
+
+safeIpcHandler('set-network-analyzer', async (event, systemName, analyzerType) => {
+  return new Promise((resolve, reject) => {
+    const scriptPath = path.join(process.resourcesPath, 'assets', 'set_network_analyzer.ps1');
+    const command = `powershell.exe -ExecutionPolicy Bypass -File "${scriptPath}" -systemName "${systemName}" -analyzerType "${analyzerType}"`;
+
+    console.log('Executing command:', command);
+
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Error executing PowerShell script: ${error}`);
+        reject(error);
+        return;
+      }
+      if (stderr) {
+        console.error(`PowerShell script stderr: ${stderr}`);
+      }
+      resolve(stdout);
+    });
+  });
+});

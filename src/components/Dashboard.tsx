@@ -17,10 +17,6 @@ const { ipcRenderer } = window.require('electron');
 import '../styles/Dashboard.css';
 import { VncScreen } from 'react-vnc';
 
-
-
-
-
 export interface SystemCardData {
   name: string;
   type: string;
@@ -31,6 +27,7 @@ export interface SystemCardData {
     ipAddress?: string;
     Motherboard?: string;
     Printer?: string;
+    NetworkAnalyzer?: string; // Add this line
   };
 }
 
@@ -327,7 +324,8 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
             IsOnline: system.IsOnline || false,
             ipAddress: system.ipAddress || 'Not Available',
             Motherboard: system.Motherboard || 'Not Available',
-            Printer: system.Printer || 'Not Available'
+            Printer: system.Printer || 'Not Available',
+            NetworkAnalyzer: system.NetworkAnalyzer || 'Not Available' // Add this line
           }
         };
 
