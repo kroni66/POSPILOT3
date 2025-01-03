@@ -13,6 +13,7 @@ import DownloadLogsModal from './DownloadLogsModal';
 import VNCModal from './VNCModal';
 import LoginScreen from './LoginScreen';
 import NotificationsCenter from './NotificationsCenter';
+import NetworkAnalyzer from './NetworkAnalyzer'; // P0cad
 const { ipcRenderer } = window.require('electron');
 import '../styles/Dashboard.css';
 import { VncScreen } from 'react-vnc';
@@ -129,6 +130,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
   const [showChangelog, setShowChangelog] = useState(false);
   const [unreadNotificationsCount, setUnreadNotificationsCount] = useState<number>(0);
   const [isVNCModalOpen, setIsVNCModalOpen] = useState(false); // Pfb2a
+  const [showNetworkAnalyzer, setShowNetworkAnalyzer] = useState(false); // P51f4
 
   // Add this function to generate suggestions
   const generateSuggestions = (input: string) => {
@@ -637,6 +639,10 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
     setIsVNCModalOpen(!isVNCModalOpen);
   };
 
+  const toggleNetworkAnalyzer = () => { // P0204
+    setShowNetworkAnalyzer(!showNetworkAnalyzer);
+  };
+
   // Return login screen if not authenticated
   if (!isAuthenticated) {
     return <LoginScreen onLogin={handleLogin} />;
@@ -690,6 +696,13 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
                   title="Toggle VNC Modal" // P6d18
                 >
                   VNC
+                </button>
+                <button 
+                  className="network-analyzer-toggle-button" 
+                  onClick={toggleNetworkAnalyzer} 
+                  title="Toggle Network Analyzer" // P0204
+                >
+                  Network Analyzer
                 </button>
               </h1>
               {showChangelog && (
@@ -884,6 +897,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
                 )
               )}
             </div>
+            {showNetworkAnalyzer && <NetworkAnalyzer />} // Pad43
           </div>
         )}
         {activeMenuItem === 'iSCAN Parser' && <ISCANParser systemName={selectedSystemName || ''} />}
