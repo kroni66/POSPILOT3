@@ -28,4 +28,4 @@ jobs:
       - name: Build project
         run: npm run build
         env:
-         GH_TOKEN: "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"
+         GH_TOKEN: "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"
