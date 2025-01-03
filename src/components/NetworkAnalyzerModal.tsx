@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import NetworkAnalyzer from './NetworkAnalyzer';
+import { SystemCardData } from './Dashboard';
 
-const NetworkAnalyzerModal = ({ systemCards }) => {
+interface NetworkAnalyzerModalProps {
+  systemCards: SystemCardData[];
+}
+
+const NetworkAnalyzerModal: React.FC<NetworkAnalyzerModalProps> = ({ systemCards }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClose = () => {
@@ -9,15 +14,14 @@ const NetworkAnalyzerModal = ({ systemCards }) => {
   };
 
   return (
-    <div>
+    <div className="network-analyzer-modal">
       <button onClick={() => setIsOpen(true)}>Open Network Analyzer</button>
       {isOpen && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <button onClick={handleClose} className="close-button">Close</button>
-            <NetworkAnalyzer systemCards={systemCards} />
-          </div>
-        </div>
+        <NetworkAnalyzer 
+          systemCards={systemCards}
+          isOpen={isOpen}
+          onClose={handleClose}
+        />
       )}
     </div>
   );

@@ -908,3 +908,25 @@
   padding: 20px;
   color: var(--text-color-light);
 }
+
+.network-analyzer-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 16px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.network-analyzer-button:hover {
+  background-color: var(--primary-color-dark);
+}
+
+.network-analyzer-button svg {
+  font-size: 1.2em;
+}

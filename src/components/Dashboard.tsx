@@ -4,7 +4,7 @@ import ISCANParser, { ISCANParserProps } from './ISCANParser';
 import SQLSpace from './SQLSpace';
 import LoadingModal from './LoadingModal';
 import PosAdapterParser, { PosAdapterParserProps, PosAdapterParserState } from './PosAdapterParser';
-import { FiBell, FiSun, FiMoon, FiGrid, FiList, FiRefreshCw, FiMonitor, FiInfo } from 'react-icons/fi';
+import { FiBell, FiSun, FiMoon, FiGrid, FiList, FiRefreshCw, FiMonitor, FiInfo, FiActivity } from 'react-icons/fi';
 import SystemCard from './SystemCard';
 import SystemList from './SystemList';
 import TPiSCAN from './TPiSCAN';
@@ -691,17 +691,11 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
                   <FiInfo />
                 </button>
                 <button 
-                  className="vnc-toggle-button" 
-                  onClick={handleVNCModalToggle} 
-                  title="Toggle VNC Modal" // P6d18
+                  className="network-analyzer-button" 
+                  onClick={toggleNetworkAnalyzer}
+                  title="Network Analyzer"
                 >
-                  VNC
-                </button>
-                <button 
-                  className="network-analyzer-toggle-button" 
-                  onClick={toggleNetworkAnalyzer} 
-                  title="Toggle Network Analyzer" // P0204
-                >
+                  <FiActivity />
                   Network Analyzer
                 </button>
               </h1>
@@ -897,7 +891,13 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
                 )
               )}
             </div>
-            {showNetworkAnalyzer && <NetworkAnalyzer systemCards={systemCards} />} // Pad43
+            {showNetworkAnalyzer && (
+              <NetworkAnalyzer 
+                systemCards={systemCards} 
+                isOpen={showNetworkAnalyzer} 
+                onClose={() => setShowNetworkAnalyzer(false)} 
+              />
+            )}
           </div>
         )}
         {activeMenuItem === 'iSCAN Parser' && <ISCANParser systemName={selectedSystemName || ''} />}
