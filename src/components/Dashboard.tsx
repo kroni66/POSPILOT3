@@ -13,6 +13,7 @@ import DownloadLogsModal from './DownloadLogsModal';
 import VNCModal from './VNCModal';
 import LoginScreen from './LoginScreen';
 import NotificationsCenter from './NotificationsCenter';
+import NetworkAnalyzer from './NetworkAnalyzer'; // P0cad
 const { ipcRenderer } = window.require('electron');
 import '../styles/Dashboard.css';
 import { VncScreen } from 'react-vnc';
@@ -128,6 +129,8 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
   const [vncConnectionProgress, setVncConnectionProgress] = useState<{ [key: string]: number }>({});
   const [showChangelog, setShowChangelog] = useState(false);
   const [unreadNotificationsCount, setUnreadNotificationsCount] = useState<number>(0);
+  const [isVNCModalOpen, setIsVNCModalOpen] = useState(false); // Pfb2a
+  const [showNetworkAnalyzer, setShowNetworkAnalyzer] = useState(false); // P51f4
 
   // Add this function to generate suggestions
   const generateSuggestions = (input: string) => {
@@ -632,6 +635,14 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
     setUnreadNotificationsCount(prev => prev + 1);
   };
 
+  const handleVNCModalToggle = () => { // Pb4ac
+    setIsVNCModalOpen(!isVNCModalOpen);
+  };
+
+  const toggleNetworkAnalyzer = () => { // P0204
+    setShowNetworkAnalyzer(!showNetworkAnalyzer);
+  };
+
   // Return login screen if not authenticated
   if (!isAuthenticated) {
     return <LoginScreen onLogin={handleLogin} />;
@@ -678,6 +689,20 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
                   title="View Changelog"
                 >
                   <FiInfo />
+                </button>
+                <button 
+                  className="vnc-toggle-button" 
+                  onClick={handleVNCModalToggle} 
+                  title="Toggle VNC Modal" // P6d18
+                >
+                  VNC
+                </button>
+                <button 
+                  className="network-analyzer-toggle-button" 
+                  onClick={toggleNetworkAnalyzer} 
+                  title="Toggle Network Analyzer" // P0204
+                >
+                  Network Analyzer
                 </button>
               </h1>
               {showChangelog && (
@@ -872,6 +897,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
                 )
               )}
             </div>
+            {showNetworkAnalyzer && <NetworkAnalyzer />} // Pad43
           </div>
         )}
         {activeMenuItem === 'iSCAN Parser' && <ISCANParser systemName={selectedSystemName || ''} />}
@@ -942,6 +968,14 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
           password={vncConnections[activeVNCModal].password}
         />
       )}
+      <VNCModal // P8f64
+        isOpen={isVNCModalOpen}
+        onClose={handleVNCModalToggle}
+        systemName="Example System"
+        systemType="SCO"
+        url="wss://example.com/vnc"
+        password="examplePassword"
+      />
     </div>
   );
 };
