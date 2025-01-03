@@ -55,7 +55,6 @@ function createWindow() {
 async function initializeApp() {
   console.log('App is ready');
   createWindow();
-  loadPlugins(); // Call loadPlugins in the initializeApp function
 }
 
 app.on('ready', initializeApp);
@@ -809,38 +808,4 @@ safeIpcHandler('disconnect-status', async (event, systemName) => {
     statusConnections.delete(systemName);
   }
   return { success: true };
-});
-
-// Add a new function to load plugins from a plugins directory
-async function loadPlugins() {
-  const pluginsDir = path.join(__dirname, 'plugins');
-  try {
-    const files = await fs.readdir(pluginsDir);
-    for (const file of files) {
-      const pluginPath = path.join(pluginsDir, file);
-      const plugin = require(pluginPath);
-      if (typeof plugin === 'function') {
-        plugin();
-      }
-    }
-  } catch (error) {
-    console.error('Error loading plugins:', error);
-  }
-}
-
-// Add a new IPC handler to load a specific plugin
-safeIpcHandler('load-plugin', async (event, pluginName) => {
-  const pluginPath = path.join(__dirname, 'plugins', pluginName);
-  try {
-    const plugin = require(pluginPath);
-    if (typeof plugin === 'function') {
-      plugin();
-      return { success: true };
-    } else {
-      return { success: false, error: 'Invalid plugin format' };
-    }
-  } catch (error) {
-    console.error('Error loading plugin:', error);
-    return { success: false, error: error.message };
-  }
 });
