@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { FiHome, FiTool, FiSettings, FiChevronRight, FiChevronDown, FiDatabase, FiMenu } from 'react-icons/fi';
+import { FiHome, FiTool, FiSettings, FiChevronRight, FiChevronDown, FiDatabase, FiMenu, FiBell, FiMoon, FiSun } from 'react-icons/fi';
 import { FaExchangeAlt, FaCashRegister, FaFileCode } from 'react-icons/fa';
 import beruskaLogo from '../styles/beruska.png'; // Import the image
-
 
 interface MenuItem {
   name: string;
