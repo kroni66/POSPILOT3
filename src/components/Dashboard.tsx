@@ -897,7 +897,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
                 )
               )}
             </div>
-            {showNetworkAnalyzer && <NetworkAnalyzer />} // Pad43
+            {showNetworkAnalyzer && <NetworkAnalyzer systemCards={systemCards} />} // Pad43
           </div>
         )}
         {activeMenuItem === 'iSCAN Parser' && <ISCANParser systemName={selectedSystemName || ''} />}

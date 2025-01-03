@@ -1,57 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FlowChartWithState } from '@mrblenny/react-flow-chart';
 
-const NetworkAnalyzer = () => {
+const NetworkAnalyzer = ({ systemCards }) => {
   const initialState = {
     nodes: {
-      node1: {
-        id: 'node1',
+      tpServer: {
+        id: 'tpServer',
         type: 'input-output',
-        position: { x: 100, y: 100 },
-        ports: {
-          port1: { id: 'port1', type: 'input' },
-          port2: { id: 'port2', type: 'output' },
-        },
-      },
-      node2: {
-        id: 'node2',
-        type: 'input-output',
-        position: { x: 400, y: 100 },
+        position: { x: 300, y: 50 },
         ports: {
           port1: { id: 'port1', type: 'input' },
           port2: { id: 'port2', type: 'output' },
         },
       },
     },
-    links: {
-      link1: {
-        id: 'link1',
-        from: { nodeId: 'node1', portId: 'port2' },
-        to: { nodeId: 'node2', portId: 'port1' },
-      },
-    },
+    links: {},
     selected: {},
     hovered: {},
   };
 
   const [chartState, setChartState] = useState(initialState);
 
-  const handleNodeLink = (fromNode, toNode) => {
-    const newLinkId = `link${Object.keys(chartState.links).length + 1}`;
-    const newLink = {
-      id: newLinkId,
-      from: { nodeId: fromNode.id, portId: fromNode.ports.port2.id },
-      to: { nodeId: toNode.id, portId: toNode.ports.port1.id },
-    };
+  useEffect(() => {
+    const newNodes = { ...initialState.nodes };
+    const newLinks = { ...initialState.links };
 
-    setChartState((prevState) => ({
-      ...prevState,
-      links: {
-        ...prevState.links,
-        [newLinkId]: newLink,
-      },
-    }));
-  };
+    systemCards.forEach((system, index) => {
+      const nodeId = `node${index + 1}`;
+      newNodes[nodeId] = {
+        id: nodeId,
+        type: 'input-output',
+        position: { x: 100, y: 150 + index * 100 },
+        ports: {
+          port1: { id: 'port1', type: 'input' },
+          port2: { id: 'port2', type: 'output' },
+        },
+      };
+
+      const linkId = `link${index + 1}`;
+      newLinks[linkId] = {
+        id: linkId,
+        from: { nodeId, portId: 'port2' },
+        to: { nodeId: 'tpServer', portId: 'port1' },
+      };
+    });
+
+    setChartState({
+      nodes: newNodes,
+      links: newLinks,
+      selected: {},
+      hovered: {},
+    });
+  }, [systemCards]);
 
   return (
     <div style={{ height: '500px' }}>
