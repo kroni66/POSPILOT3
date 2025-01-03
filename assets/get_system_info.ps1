@@ -14,11 +14,14 @@ try {
     # Get MAC address from AD
     $macAddress = (Get-ADComputer -Identity $systemName -Properties macaddress).macaddress
 
+    # Retrieve HDD space information
+    $hddSpace = (Get-PSDrive -Name C).Used
 
     $result = @{
         ipAddress = $ipAddress
         macAddress = $macAddress
         operatingSystem = $operatingSystem
+        hddSpace = $hddSpace
     }
 
     ConvertTo-Json $result
