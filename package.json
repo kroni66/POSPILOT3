@@ -42,6 +42,7 @@
     "react-virtualized-auto-sizer": "^1.0.24",
     "react-vnc": "^1.0.0",
     "@mrblenny/react-flow-chart": "0.0.14",
+    "styled-components": "6.1.13",
     "react-window": "^1.8.10",
     "uuid": "^10.0.0",
     "ws": "^8.18.0"
