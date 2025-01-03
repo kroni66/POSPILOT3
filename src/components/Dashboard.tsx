@@ -13,6 +13,7 @@ import DownloadLogsModal from './DownloadLogsModal';
 import VNCModal from './VNCModal';
 import LoginScreen from './LoginScreen';
 import NotificationsCenter from './NotificationsCenter';
+import NetworkAnalyzer from './NetworkAnalyzer'; // Import the new component
 const { ipcRenderer } = window.require('electron');
 import '../styles/Dashboard.css';
 import { VncScreen } from 'react-vnc';
@@ -124,6 +125,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
   const [vncConnectionProgress, setVncConnectionProgress] = useState<{ [key: string]: number }>({});
   const [showChangelog, setShowChangelog] = useState(false);
   const [unreadNotificationsCount, setUnreadNotificationsCount] = useState<number>(0);
+  const [isNetworkAnalyzerOpen, setIsNetworkAnalyzerOpen] = useState<boolean>(false); // Add state for network analyzer
 
   // Add this function to generate suggestions
   const generateSuggestions = (input: string) => {
@@ -760,6 +762,12 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
                 >
                   {isVNCMode ? 'Exit VNC Mode' : 'VNC Mode'}
                 </button>
+                <button 
+                  onClick={() => setIsNetworkAnalyzerOpen(true)} // Add button to open network analyzer
+                  className="network-analyzer-button"
+                >
+                  Open Network Analyzer
+                </button>
               </div>
             </div>
             <div className="system-cards-container">
@@ -936,6 +944,12 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
           systemType={systemCards.find(card => card.name === activeVNCModal)?.type || ''}
           url={vncConnections[activeVNCModal].url}
           password={vncConnections[activeVNCModal].password}
+        />
+      )}
+      {isNetworkAnalyzerOpen && (
+        <NetworkAnalyzer
+          isOpen={isNetworkAnalyzerOpen}
+          onClose={() => setIsNetworkAnalyzerOpen(false)}
         />
       )}
     </div>
