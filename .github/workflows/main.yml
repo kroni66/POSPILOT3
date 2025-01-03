@@ -1,0 +1,32 @@
+
+on:
+  push:
+    tags:
+      - 'v*' 
+
+jobs:
+  build-and-release:
+    runs-on: self-hosted
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: PostInstall
+        run: npm run postinstall
+
+      - name: React building
+        run: npm run react-build
+
+      - name: Build project
+        run: npm run build
+        env:
+         GH_TOKEN: "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"
