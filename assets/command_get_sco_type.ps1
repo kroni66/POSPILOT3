@@ -45,6 +45,7 @@ $scriptBlock = {
         ipAddress = $system.IPv4Address
         Motherboard = 'N/A'
         Printer = $null
+        NetworkAnalyzer = 'Not Available' # P00c3
     }
 
     # Quick ping check with timeout
@@ -192,6 +193,18 @@ $scriptBlock = {
                     Remove-CimSession -CimSession $cimSession -ErrorAction SilentlyContinue
                 }
             }
+
+            # Retrieve network analyzer information
+            try {
+                $networkAnalyzerPath = "\\$($system.Name)\c$\Program Files\NetworkAnalyzer\config.xml"
+                if (Test-Path $networkAnalyzerPath) {
+                    $networkAnalyzerConfig = [xml](Get-Content $networkAnalyzerPath)
+                    $systemInfo.NetworkAnalyzer = $networkAnalyzerConfig.SelectSingleNode("//Analyzer/Type").InnerText
+                }
+            } catch {
+                Write-Warning "Error retrieving network analyzer information for $($system.Name): $_"
+                $systemInfo.NetworkAnalyzer = "Not Available"
+            }
         }
         catch {
             Write-Warning "Error processing $($system.Name): $_"
@@ -200,6 +213,7 @@ $scriptBlock = {
             $systemInfo.Architecture = "Not Available"
             $systemInfo.Motherboard = "Not Available"
             $systemInfo.Printer = "Not Available"
+            $systemInfo.NetworkAnalyzer = "Not Available" # Pdbda
         }
     }
 
@@ -250,6 +264,7 @@ try {
             ipAddress = if ($_.ipAddress) { $_.ipAddress } else { "Not Available" }
             Motherboard = if ($_.Motherboard) { $_.Motherboard } else { "Not Available" }
             Printer = if ($_.Printer) { $_.Printer } else { "Not Available" }
+            NetworkAnalyzer = if ($_.NetworkAnalyzer) { $_.NetworkAnalyzer } else { "Not Available" } # Pdbda
         }
         $cleanSystem
     }
