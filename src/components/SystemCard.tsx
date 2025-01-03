@@ -17,6 +17,7 @@ interface SystemCardProps {
     ipAddress?: string;
     Motherboard?: string;
     Printer?: string;
+    NetworkAnalyzer?: string; // Add this line
   };
   onDetailsClick: () => void;
   onOpenParser: (systemName: string) => void;
@@ -222,6 +223,9 @@ const SystemCard: React.FC<SystemCardProps> = ({ name, type, details, onDetailsC
               <p className="system-card__detail"><strong>Printer:</strong> {details.Printer}</p>
             )}
           </>
+        )}
+        {details.NetworkAnalyzer && ( // Add this block
+          <p className="system-card__detail"><strong>Network Analyzer:</strong> {details.NetworkAnalyzer}</p>
         )}
       </div>
       <div className="system-card__footer">
